@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.View.NewPage1"
+             xmlns:viewmodel="clr-namespace:MauiApp1.ViewModel"
+             xmlns:model="clr-namespace:MauiApp1.Model"
+             x:DataType="viewmodel:ShoppingListViewModel"
+             Title="NewPage1">
+    <Grid Margin="5"
+          RowDefinitions=".1*, .2*, .87*"
+          ColumnDefinitions=".66*, .34*"
+          >
+        <Label Text="Shopping List" Grid.ColumnSpan="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="20"/>
+        <Entry x:Name="ListEntry" Placeholder="Input Good" Grid.Row="1"/>
+        <Button Text="Add" Grid.Column="1" Grid.Row="1" Command="{Binding AddItem}" CommandParameter="{Binding Source={x:Reference ListEntry}, Path=Text}"/>
+        <ScrollView Grid.Row="2" Grid.ColumnSpan="2">
+            <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:ShoppingListItem">
+                    <Grid ColumnDefinitions=".1*, *">
+                        <CheckBox BackgroundColor="Black"/>
+                        <Label Text="{Binding Name}" Grid.Column="1" Padding="5"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>
