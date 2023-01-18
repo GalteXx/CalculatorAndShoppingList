@@ -15,8 +15,6 @@ namespace MauiApp1.ViewModel
     {
         public ObservableCollection<ShoppingListItem> Items { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public ICommand AddItem => new Command<string>(NewItem);
 
         public ShoppingListViewModel()
@@ -29,6 +27,7 @@ namespace MauiApp1.ViewModel
             Items.Add(new ShoppingListItem(ItemName));
         } 
         
+        public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

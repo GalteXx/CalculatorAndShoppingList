@@ -15,15 +15,15 @@
         <Button Text="Add" Grid.Column="1" Grid.Row="1" Command="{Binding AddItem}" CommandParameter="{Binding Source={x:Reference ListEntry}, Path=Text}"/>
         <ScrollView Grid.Row="2" Grid.ColumnSpan="2">
             <CollectionView ItemsSource="{Binding Items}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:ShoppingListItem">
-                    <Grid ColumnDefinitions=".1*, *">
-                        <CheckBox BackgroundColor="Black"/>
-                        <Label Text="{Binding Name}" Grid.Column="1" Padding="5"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:ShoppingListItem">
+                        <Grid ColumnDefinitions=".1*, *">
+                            <CheckBox BackgroundColor="Black"/>
+                            <Label Text="{Binding Name}" Grid.Column="1" Padding="5"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </ScrollView>
     </Grid>
 </ContentPage>
